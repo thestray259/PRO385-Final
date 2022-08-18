@@ -2,17 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] CharacterController controller;
+    //[SerializeField] Animator animator;
+    [SerializeField] Transform view;
+    [SerializeField] float speed;
+    [SerializeField] float jumpForce;
+    [SerializeField] float turnRate;
+
+    Vector3 velocity = Vector3.zero;
+    float airTime = 0;
+
     void Start()
     {
-        
+        view = (view == null) ? Camera.main.transform : view;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // xz movement
+        Vector3 direction = Vector3.zero;
+        direction.x = Input.GetAxis("Horizontal");
+        direction.z = Input.GetAxis("Vertical");
+        direction = Vector3.ClampMagnitude(direction, 1);
+
+        // convert direction from world space to view space
+        Quaternion viewSpace = Quaternion.AngleAxis(view.rotation.eulerAngles.y, Vector3.up);
+        direction = viewSpace * direction;
+
+        // y movement
+        // !!! check if grounded for jump !!!
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            velocity.y = jumpForce;
+        }
+        velocity += Physics.gravity * Time.deltaTime;
+
+        // move character (xyz)
+        controller.Move(((direction * speed) + velocity) * Time.deltaTime);
     }
 }

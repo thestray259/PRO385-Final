@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] float turnRate;
 
-    Vector3 velocity = Vector3.zero;
+    public Vector3 velocity = Vector3.zero;
     float airTime = 0;
 
     void Start()
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
         // y movement
         // !!! check if grounded for jump !!!
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             velocity.y = jumpForce;
         }

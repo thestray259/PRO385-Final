@@ -6,14 +6,17 @@ using UnityEngine;
 public class Companion : Agent
 {
     [SerializeField] GameObject player;
-    [SerializeField] NavMeshMovement navMeshMovement; 
-    //[SerializeField] CharacterController companionController; 
+    [SerializeField] NavMeshMovement navMeshMovement;
+    //[SerializeField] CharacterController controller; 
+    [SerializeField] float jumpForce;
 
     public float speed = 5; 
     public FloatRef playerDistance;
     public Vector3 destination;
     public Quaternion rotation;
-    public Vector3 forward; 
+    public Vector3 forward;
+    public bool isGrounded = false;
+    public Vector3 velocity = Vector3.zero;
 
     void Start()
     {
@@ -22,6 +25,9 @@ public class Companion : Agent
 
     void Update()
     {
+        //if (controller.isGrounded) isGrounded = true;
+        //else isGrounded = false; 
+
         Move(); 
     }
 
@@ -43,7 +49,6 @@ public class Companion : Agent
             if (navMeshMovement.navMeshAgent.isStopped == true)
             {
                 movement.Resume();
-                //movement.MoveTowards(destination);
             }
             else movement.MoveTowards(destination); 
             
@@ -51,8 +56,35 @@ public class Companion : Agent
             {
                 movement.Stop(); 
             }
-
         }
-        //else movement.Stop();
+
+        // if grounded and y value above 1.5f 
+        if (isGrounded == true && destination.y >= 1.5f)
+        {
+            // jump 
+            velocity.y = jumpForce;
+        }
+        velocity += Physics.gravity * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            isGrounded = true; 
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            isGrounded = false; 
+        }
+    }
+
+    /*    private void OnCollisionStay(Collision collision)
+        {
+            isGrounded = true; 
+        }*/
 }

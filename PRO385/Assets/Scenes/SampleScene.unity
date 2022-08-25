@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 68398944}
   - component: {fileID: 68398943}
   - component: {fileID: 68398942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Prism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 835562489}
   - component: {fileID: 835562488}
   - component: {fileID: 835562487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2491,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3938
+  m_Name: pb_Mesh24168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2745,7 +2745,7 @@ GameObject:
   - component: {fileID: 1196639252}
   - component: {fileID: 1196639251}
   - component: {fileID: 1196639250}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2845,7 +2845,7 @@ GameObject:
   - component: {fileID: 1823567827}
   - component: {fileID: 1823567826}
   - component: {fileID: 1823567825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36924,7 +36924,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9612
+  m_Name: pb_Mesh24200
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37136,7 +37136,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6246
+  m_Name: pb_Mesh24234
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37357,6 +37357,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 150232527}
+    - target: {fileID: 4337625549609576694, guid: 666cb4cdf3da73c438634f64d9f2bb83, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337625549609576694, guid: 666cb4cdf3da73c438634f64d9f2bb83, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4337625549609576694, guid: 666cb4cdf3da73c438634f64d9f2bb83, type: 3}
       propertyPath: navMeshMovement
       value: 
